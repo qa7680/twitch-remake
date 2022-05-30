@@ -166,7 +166,7 @@ body{
     font-size: small;
     right: 0;
     background-color: #1c1c1e;
-    padding: 1rem 1rem;
+    padding: 1rem 0.5rem;
     border-radius: 6px;
     box-shadow: 3px -1px 15px 4px rgba(0,0,0,0.59);
     min-width: 10rem;
@@ -174,11 +174,18 @@ body{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 0.5rem;
+        padding-right: 0.4rem;
+        div{
+            justify-content: flex-start;
+            gap:0.4rem;
+            width: 100%;
+            padding: 0 0.6rem;
+            display: flex;
+        }
     }
 }
 .profile-dropdown div:hover{
-    background-color: hsla(0, 0%, 100%, 0.25);
+    background-color:rgb(89, 89, 89);
     border-radius: 6px;
     cursor: pointer;
 }
