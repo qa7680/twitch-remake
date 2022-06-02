@@ -50,17 +50,21 @@ body{
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
+
 .search{
     background-color: hsla(0, 0%, 100%, 0.2);
     padding: 0.5rem 0.7rem;
+    outline: none;
+    border: none;
     border: 2px solid rgb(30, 30, 30);
     border-radius: 6px 0 0 6px;
-    min-width: 115%;
     line-height: 1.5;
     color: white;
     font-family: Inter;
     font-weight: bold;
+    width: 100%;
 }
 .search::placeholder{
     color: #efeff1;
@@ -74,9 +78,6 @@ body{
     border: 2px solid #a970ff;
     outline: none;
     background: black;
-}
-.center{
-    justify-content: center;
 }
 .searchBtn{
     padding: 0.35rem;
@@ -189,3 +190,20 @@ body{
     border-radius: 6px;
     cursor: pointer;
 }
+.search-dropdown{
+    position: absolute;
+    background-color: #1c1c1e;
+    border-radius: 0px 0px 6px 6px;  
+    width: 100%;
+    padding:0;
+}
+.dropdownSearch{
+    position: relative;
+    left: 0;
+    display: inline-block;
+    img{
+        vertical-align: middle;
+    }
+    width: 25rem;
+}
+

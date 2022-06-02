@@ -1,16 +1,24 @@
 import "..//nav/nav.scss";
 import React, { useState, useEffect, useRef } from "react";
-const Nav =() => {
+import  "../searchDropdown/searchDropdown";
+import SearchDropdown from "../searchDropdown/searchDropdown";
+
+const Nav = () => {
 
     const [ moreToggled, setMoreToggled ] = useState(false);
     const [ primeToggled, setPrimeToggled ] = useState(false);
-    const [ profileToggled, setProfileToggled] = useState(false);
+    const [ profileToggled, setProfileToggled ] = useState(false);
+    const [ inputValue, setInputValue ] = useState('');
+    const [ searchArray, setSearchArray ] = useState([]);
+    const [ inputClicked, setInputClicked ] = useState(false);
     const moreNode = useRef();
     const moreContent = useRef();
     const primeNode = useRef();
     const primeText = useRef();
     const profileNode = useRef();
     const profileContent = useRef();
+    const searchContent = useRef();
+    const inputRef = useRef();
 
     const hideMore = () => {
         setMoreToggled(!moreToggled);
@@ -41,7 +49,32 @@ const Nav =() => {
         }else{
             setProfileToggled(false);
         }
+    };
+    
+    const inputFalse = () => {
+        setInputClicked(false);
+        setInputValue('');
     }
+    
+    const outsideSearch = (e) => {
+        if(inputRef.current?.contains(e.target)){
+            return;
+        }else if(searchContent.current?.contains(e.target)){
+            setTimeout(inputFalse, 150);
+        }
+        else{
+            setInputClicked(false);
+        }
+    };
+
+    const onInputClicked = () => {
+        setInputClicked(true);
+    };
+
+    //handles input change
+    const onInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
 
     useEffect(() => {
         document.addEventListener('mousedown', outsideMore)
@@ -70,6 +103,31 @@ const Nav =() => {
         }
     }, [profileToggled])
 
+    useEffect(() => {
+        document.addEventListener('mousedown', outsideSearch)
+
+        //cleanup
+        return() => {
+            document.removeEventListener('mousedown', outsideSearch)
+        }
+    },[inputValue])
+
+    useEffect(() => {
+        if(inputValue.length>0){
+        fetch(`https://api.twitch.tv/helix/search/channels?query=${inputValue}&first=7`, 
+        {mode: "cors", method: "GET", 
+        headers: {
+        "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
+        "Client-Id": `${process.env.REACT_APP_CLIENT_ID}`
+        }})
+            .then(res => {return res.json()})
+            .then(res => setSearchArray(res.data))
+            .catch(err => console.error(err));
+    }else{
+        setSearchArray([]);
+        
+    }
+    }, [inputValue]);
 
     return(
             <nav className="navigation">
@@ -112,9 +170,15 @@ const Nav =() => {
                         }
                     </div>
                 </div>
-                <div className="center">
-                    <input placeholder="Search" className="search"></input>
-                    <img alt="search" className="searchBtn" src= {require("../../icons/searchIcon.png")} style = { {width: "25px", height: "25px"} }></img>
+                
+                <div className="dropdownSearch">
+                    <div className="center">
+                        <input ref={inputRef} onClick={onInputClicked} onChange={onInputChange} placeholder="Search" className="search" value={inputValue}></input>
+                        <img alt="search" className="searchBtn" src= {require("../../icons/searchIcon.png")} style = { {width: "25px", height: "25px"} }></img>
+                    </div>
+                {inputClicked ?
+                <SearchDropdown searchArray={searchArray} ref = {searchContent}/>
+                : null}
                 </div>
                 <div className="right">
                     <div className="dropdown">

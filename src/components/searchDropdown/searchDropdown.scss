@@ -1,0 +1,34 @@
+.searchItems{
+    padding: 0.7rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.leftside{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:0.3rem;
+}
+.searchImgContainer{
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.channelPhoto{
+    border-radius: 9000px;
+}
+.isLive{
+    background-color: rgb(196, 30, 30);
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    font-size: small;
+}
+.itemName{
+    font-size: 14px;
+    font-weight: bold;
+}
