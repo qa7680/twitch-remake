@@ -112,3 +112,21 @@
     white-space: nowrap;
     cursor:default;
 }
+
+.userContainerHidden:hover::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    color:#bf94ff;
+    background-color: black;
+    width: 9rem;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transform: translateX(29%) translateY(-55%);
+    padding: 0.5rem;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor:default;
+}

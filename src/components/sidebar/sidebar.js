@@ -50,7 +50,7 @@ const Sidebar = () => {
                     title="Collapse"/>
                 </div>
                 {topStreamers.map((streamer) => 
-                <div className="userContainer" data-tooltip={streamer.title}>
+                <div onClick={() => console.log(streamer)} className="userContainer" data-tooltip={streamer.title}>
                     <div className="usersExpanded">
                         <div className="picAndUser">
                             <div>
@@ -77,7 +77,7 @@ const Sidebar = () => {
                     title = "Expand"/>
                 </div>
                 {topStreamers.map((streamer) => 
-                <div class="userContainerHidden" title={streamer.name}>
+                <div class="userContainerHidden" data-tooltip={`${streamer.name} - ${streamer.game}`} >
                     <div className="userCollapsed">
                         <img className="imgRC" src={streamer.image} style={{width: "30px", height: "30px"}}></img>
                     </div>
