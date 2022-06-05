@@ -1,0 +1,114 @@
+.sidebar{
+    border-top: none;
+    background: #28282a;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    // padding: 1rem;
+}
+.sidebarTopShown {
+    display: flex;
+    flex-direction: column;
+}
+.rcImgShown{
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+.sidebarTopShown p{
+    white-space: nowrap;
+}
+.showHideImg, .showHideImgHidden{
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 5px;
+}
+.showHideImgHidden{
+    margin-bottom: 1rem;
+}
+.showHideImg:hover, .showHideImgHidden:hover{
+    background-color:rgb(89, 89, 89)
+}
+.usersExpanded{
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    justify-content: space-between;
+}
+.streamerPhoto{
+    border-radius: 9000px;
+}
+.imgRC{
+    border-radius: 900px;
+}
+
+.liveIcon{
+    min-width: 8px;
+    max-width: 8px;
+    min-height: 8px;
+    max-height: 8px;
+    background-color: red;
+    border-radius: 900px;
+}
+.viewCount{
+    display: flex;
+    gap:0.3rem;
+    align-items: center;
+    font-size: 13px;
+    align-self: flex-start;
+}
+.picAndUser{
+    display: flex;
+    gap: 0.7rem;
+}
+.userSidebarTxt{
+    display: block;
+}
+.gameName{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 8rem;
+    white-space: nowrap;
+    color: #adadb8;
+    font-size: 13px;
+}
+.streamerName{
+    color: #dedee3;
+    font-size: 14px;
+}
+.userContainer{
+    padding: 0.4rem 0.5rem;
+    display: flex;
+    align-items: center;
+}
+.userContainer:hover{
+    cursor: pointer;
+    background-color: #333336;
+}
+.sidebarTopHidden{
+    padding: 0.3rem 0.5rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.userContainerHidden{
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.userContainer:hover::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-overflow: ellipsis;
+    width: 12rem;
+    transform: translateX(115%);
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor:default;
+}

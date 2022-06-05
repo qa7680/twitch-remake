@@ -124,8 +124,7 @@ const Nav = () => {
             .then(res => setSearchArray(res.data))
             .catch(err => console.error(err));
     }else{
-        setSearchArray([]);
-        
+        setSearchArray([]);   
     }
     }, [inputValue]);
 
