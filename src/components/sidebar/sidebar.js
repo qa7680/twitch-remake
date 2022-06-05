@@ -11,14 +11,20 @@ const Sidebar = () => {
         setExpand(!expand)
     };
     const fetchTopStreamers = () => {
-        fetch('https://api.twitch.tv/helix/streams?first=15',
+        fetch('https://api.twitch.tv/helix/streams?first=100',
         {mode: "cors",method: "GET", headers:{
             "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
             "Client-Id": `${process.env.REACT_APP_CLIENT_ID}`
         }}) 
             .then(res => {return res.json() })
             .then(res => {
-                res.data.forEach((streamer) => {        
+
+                //call top 100 streamers, randomize and then pick 15
+                let topFiftyStreamers = res.data;
+                topFiftyStreamers.sort((a,b) => Math.random() - 0.5);
+                topFiftyStreamers = topFiftyStreamers.slice(0,14);
+
+                topFiftyStreamers.forEach((streamer) => {        
                     fetch(`https://api.twitch.tv/helix/users?login=${streamer.user_login}`,
                     {mode: "cors",method: "GET", headers:{
                         "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
