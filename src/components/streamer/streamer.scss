@@ -1,0 +1,208 @@
+.twitchPlayerContainer{
+    width: 100%;
+    color: #dfdcd7;
+    padding: 0;
+    margin:0;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.twitchPlayerContainer::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+.twitchContainer{
+    display: flex;
+    width: 100%;
+    padding: 0;
+    background: #0b0c0d;
+    min-height: 100%;
+}
+.twitchPlayer, .chatPlayer{
+    border-width: 0;
+}
+iframe{
+    background-color: black;
+}
+.twitchPlayer{
+    width: 100%;
+    height: 85.3%;
+    overflow: scroll;
+}
+.chatPlayer{
+    width: 25%;
+    height: 100%;
+}
+.hideChatIcon{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    right: 1px;
+    margin: 0.3rem;
+    padding: 0.4rem;
+    margin-right: 0.6rem;
+    font-weight: bold;
+}
+.hideChatIcon:hover{
+    background-color:rgb(89, 89, 89);
+    border-radius: 6px;
+}
+.hideChatIconShown:hover{
+    background-color:rgb(89, 89, 89);
+    border-radius: 6px;
+}
+
+.hideChatIconShown{
+   position: absolute;
+   padding: 0.4rem;
+   margin-top: 0.5rem;
+   margin-left: 0.2rem;
+   cursor: pointer;
+   transform: rotate(180deg);
+}
+.belowTwitchPlayer{
+    display: flex;
+    flex-direction: column;
+}
+.streamerInfo{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.leftSideStreamerInfo,
+.rightSideStreamerInfo{
+    display: flex;
+    gap: 0.7rem;
+}
+
+.rightSideStreamerInfo{
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.viewCountPlusTimerPlusButtons{
+    display: flex;
+    gap: 1rem;
+}
+.profileAndLive{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+.profileAndLive:hover{
+    cursor: pointer;
+}
+.profileAndLiveImage{
+    width: 64px;
+    height: 64px;
+    border-radius:9000px; 
+    border:2px solid #522399;
+}
+.profileAndLive:hover + .profileAndLiveImage::after{
+    font-size: larger;
+}
+.isLiveStreamer{
+    background-color: rgb(196, 30, 30);
+    text-align: center;
+    transform: translateY(-70%);
+    border: 2px solid #1c1c1e;
+    border-radius: 6px;
+    line-height: 1.35;
+    width: 2rem;
+    padding: 0.1rem 0.2rem;
+    font-size: 13.5px;
+}
+.nameTitleGame{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.2rem;
+    gap: 0.3rem;
+}
+.streamerNameCheckmark{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    max-width: fit-content;
+}
+.streamerGameName{
+    color:#B481FF;
+    text-decoration: none;
+    max-width: fit-content;
+}
+.streamerGameName:hover{
+    text-decoration: underline;
+}
+.streamerTitleGame{
+    gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+.streamerNameNextToCheck a{
+    color: inherit;
+    text-decoration: none;
+}
+.streamerNameCheckmark a:hover{
+    text-decoration: underline;
+    text-decoration-color: #B481FF;
+}
+.followSubscribe{
+    display: flex;
+    gap: 0.2rem;
+    font-weight: 600;
+    font-size: 14px;
+}
+.followBtn, .subscribeBtn{
+    display: flex;
+    gap: 0.2rem;
+}
+.followBtn{
+    background-color: #9147ff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.4rem;
+    align-items: center;
+}
+.subscribeBtn{
+    background-color: hsla(0, 0%, 100%, 0.15);
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.4rem;
+}
+.followBtn:hover{
+    background-color: #772ce8;
+    cursor: pointer;
+}
+.subscribeBtn:hover{
+    cursor: pointer;
+    background-color: hsla(0, 0%, 100%, 0.2);
+}
+.heartIcon, .starIcon{
+    width: 20px;
+    height: 20px;
+}
+.followSubscribe{
+    display: flex;
+    gap: 0.6rem;
+}
+.viewCountPlusImage{
+    display: flex;
+    align-items: center;
+}
+.viewCountPlusTimerPlusButtons{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+.timerCount{
+    width: 3.5rem;
+}
+.sharePlusMore{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.3rem;
+}

@@ -2,6 +2,7 @@ import "..//nav/nav.scss";
 import React, { useState, useEffect, useRef } from "react";
 import  "../searchDropdown/searchDropdown";
 import SearchDropdown from "../searchDropdown/searchDropdown";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
 
@@ -22,7 +23,7 @@ const Nav = () => {
 
     const hideMore = () => {
         setMoreToggled(!moreToggled);
-    }
+    };
 
     const outsideMore = (e) => {
         if(moreNode.current?.contains(e.target) ||
@@ -32,6 +33,22 @@ const Nav = () => {
                 setMoreToggled(false);
             }
     };
+
+    let clickIframe = window.setInterval(checkFocus, 100);
+    
+    function checkFocus() {
+      if(document.activeElement == document.getElementById("ifr")) {
+          setMoreToggled(false);
+          setPrimeToggled(false);
+          setProfileToggled(false);
+          window.focus();
+       }else if (document.activeElement === document.getElementById("ifrChat")){
+            setPrimeToggled(false);
+            setProfileToggled(false);
+            setMoreToggled(false);
+            window.focus();
+       }
+    }
 
     const outsidePrime = (e) => {
         if(primeNode.current?.contains(e.target) ||
@@ -128,10 +145,14 @@ const Nav = () => {
     }
     }, [inputValue]);
 
+
+
     return(
             <nav className="navigation">
                 <div className="left">
-                    <img alt="twitch icon" src={require("../../icons/navIcon3.png")} style = {{width:"32px", height: "32px"}}></img>
+                    <Link to = "/">
+                    <img className="twitchIcon" alt="twitch icon" src={require("../../icons/navIcon3.png")} style = {{width:"32px", height: "32px"}}></img>
+                    </Link>
                     <button className="browse">Browse</button>
                     <div className="dropdown">
                         <img onClick={hideMore} ref={moreNode} alt="more options" className="moreVert" title="more" src={require("../../icons/verticalDots2.png")} />

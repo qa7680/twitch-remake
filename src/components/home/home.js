@@ -3,7 +3,7 @@ import "./home.scss"
 const home = () => {
     return(
         <div className="homeContainer">
-            Right Side
+            Home Page
         </div>
     )
 }

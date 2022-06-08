@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    width: 100%;
 }
 .leftside{
     display: flex;
@@ -21,7 +22,7 @@
 }
 .isLive{
     background-color: rgb(196, 30, 30);
-    padding: 0.2rem 0.5rem;
+    padding: 0.1rem 0.4rem;
     margin-right: 0.5rem;
     border-radius: 4px;
     display: inline-block;
@@ -31,4 +32,9 @@
 .itemName{
     font-size: 14px;
     font-weight: bold;
+}
+.streamerLink{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

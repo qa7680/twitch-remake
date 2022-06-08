@@ -3,16 +3,20 @@ import Home from "./components/home/home"
 import Nav from "./components/nav/nav";
 import Sidebar from "./components/sidebar/sidebar";
 import "../src/RouteSwitch.scss";
+import Streamer from "./components/streamer/streamer";
 
 const RouteSwitch = () => {
     return(
         <BrowserRouter>
-            <Nav />
-            <div className="mainStuff">
-                <Sidebar />
-                <Routes>
-                    <Route path = "/" element = { <Home /> } />
-                </Routes>
+            <div class="containerAll">
+                <Nav />
+                <div className="mainStuff">
+                    <Sidebar />
+                    <Routes>
+                        <Route path = "/" element ={ <Home /> } />
+                        <Route path = "/:streamer" element={ <Streamer />} />
+                    </Routes>
+                </div>
             </div>
         </BrowserRouter>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../sidebar/sidebar.scss"
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
 
@@ -22,7 +22,7 @@ const Sidebar = () => {
                 //call top 100 streamers, randomize and then pick 15
                 let topFiftyStreamers = res.data;
                 topFiftyStreamers.sort((a,b) => Math.random() - 0.5);
-                topFiftyStreamers = topFiftyStreamers.slice(0,14);
+                topFiftyStreamers = topFiftyStreamers.slice(0,15);
 
                 topFiftyStreamers.forEach((streamer) => {        
                     fetch(`https://api.twitch.tv/helix/users?login=${streamer.user_login}`,
@@ -34,7 +34,7 @@ const Sidebar = () => {
                         .then(data => {
                             setTopStreamers(topStreamers => [...topStreamers, {name: data.data[0].display_name,
                                 views: streamer.viewer_count, image: data.data[0].profile_image_url,
-                            game: streamer.game_name, title: streamer.title}])
+                            game: streamer.game_name, title: streamer.title, login: streamer.user_login}])
                         })
                         .catch(err => console.error(err))
                 })
@@ -56,7 +56,8 @@ const Sidebar = () => {
                     title="Collapse"/>
                 </div>
                 {topStreamers.map((streamer) => 
-                <div onClick={() => console.log(streamer)} className="userContainer" data-tooltip={streamer.title}>
+                <Link to ={ `${streamer.login}` } className="streamerLink">
+                <div className="userContainer" data-tooltip={streamer.title}>
                     <div className="usersExpanded">
                         <div className="picAndUser">
                             <div>
@@ -69,11 +70,12 @@ const Sidebar = () => {
                         </div>
                         <div className="viewCount">
                             <div className="liveIcon"></div>
-                            <div>{`${(streamer.views/1000).toFixed(1)}k`}
+                            <div>{`${parseFloat((streamer.views/1000).toFixed(1))}k`}
                             </div>
                         </div>
                     </div>
                 </div>
+                </Link>
                 )}
             </div>
             :
@@ -83,11 +85,13 @@ const Sidebar = () => {
                     title = "Expand"/>
                 </div>
                 {topStreamers.map((streamer) => 
+                <Link to ={ `${streamer.login}` } className="streamerLink">
                 <div class="userContainerHidden" data-tooltip={`${streamer.name} - ${streamer.game}`} >
                     <div className="userCollapsed">
                         <img className="imgRC" src={streamer.image} style={{width: "30px", height: "30px"}}></img>
                     </div>
                 </div>
+                </Link>
                 )}
             </div>
             }
