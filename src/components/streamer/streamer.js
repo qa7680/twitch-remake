@@ -46,6 +46,8 @@ const Streamer = () => {
                         })
                             .then(res => res.json())
                             .then(resThree => {
+                                //run this block if resOne.data.length
+                                if(resTwo.data.length !== 0){
                                 setTimerCount(timer(resTwo.data[0].started_at))
                                 setStreamerInfo( 
                                     {
@@ -57,11 +59,23 @@ const Streamer = () => {
                                         tags: resTwo.data[0].tag_ids,
                                         title: resTwo.data[0].title,
                                         game: resTwo.data[0].game_name,
-                                        timeStarted: resTwo.data[0].started_at,
-                                        followers: resThree.total
+                                        timeStarted:  resTwo.data[0].started_at,
+                                        followers: resThree.total,
                                     }
                                 )
-                                console.log(resThree)
+                            }else{
+                                setTimerCount(false);
+                                setStreamerInfo({
+                                    name: resOne.data[0].display_name,
+                                        description: resOne.data[0].description,
+                                        userImage: resOne.data[0].profile_image_url,
+                                        checkmark: resOne.data[0].broadcaster_type,
+                                        viewerCount: false,                   
+                                        title: false,
+                                        game: false,                
+                                        followers: resThree.total,
+                                })
+                            }
                             }
                             )
                             .catch(err => console.error(err));
@@ -69,14 +83,16 @@ const Streamer = () => {
                     .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
-           
     }, [streamer])
+    
 
     useEffect(() => {
+        if(timerCount !== false) {
         const interval = setInterval(() => {
             setTimerCount(timer(streamerInfo.timeStarted))
         }, 1000)
         return() => clearInterval(interval)
+    }
     }, [timerCount]);
     
     return(
@@ -98,6 +114,8 @@ const Streamer = () => {
                 </img>}
 
                 <div className="belowTwitchPlayer">
+                    <>
+                    {streamerInfo.viewerCount !==false ?
                     <div className="streamerInfo">
                         <div className="leftSideStreamerInfo">
                             <div className="profileAndLive">
@@ -138,6 +156,79 @@ const Streamer = () => {
                                     <img style={{width: "20px" , height: "20px"}} src={require('../../icons/shareIcon.png')} title="share"></img>
                                     <img src={require('../../icons/verticalDots2.png')} title="more"></img>
                                 </div>
+                            </div>
+                                   
+                        </div>
+                    </div>
+                    : <div className="streamerNotLive">
+                        <div className="streamerNotLiveLeftSide">
+                            <img className="streamerNotLiveImage" src={streamerInfo.userImage} ></img>
+                            <div class="streamerNotLiveNameCheckmarkFollowers">
+                                <div className="streamerNotLiveNameCheckmark">
+                                        <div className="streamerNotLiveName">{streamerInfo.name}</div>
+                                        {streamerInfo.checkmark === "partner" &&
+                                        <img style={{width: "20px", height:"20px"}} src= {require('../../icons/verifiedOne.png')}/>
+                                }
+                                </div>
+                                <div className="aboutFollowersSection">
+                                    {streamerInfo.followers>1000000 ? 
+                                    `${(streamerInfo.followers/1000000).toFixed(1)}M`    
+                                    :
+                                    streamerInfo.followers>1000 ?
+                                    `${(streamerInfo.followers /1000).toFixed(0)}k`:
+                                    `${streamerInfo.followers}`
+                                    }
+                                    <div>followers</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="streamerNotLiveRightSide">
+                            <div className="streamerNotLiveRightSideFollowSubscribe">
+                                    <div className="followBtn">
+                                        <img className="heartIcon" src={require('../../icons/heart.png')}></img>
+                                        <div>Follow</div>
+                                    </div>
+                                    <div className="subscribeBtn">
+                                    <img className="starIcon" src={require('../../icons/star.png')}></img>
+                                        <div>Subscribe</div>
+                                    </div>
+                                    <img style={{width: "20px", height: "23px", cursor: "pointer"}} src={require('../../icons/verticalDots2.png')} title="more"></img>
+                            </div>
+                        </div>
+                      </div>
+                        }
+                    </>      
+                    
+
+                    <div className="aboutStreamerInfoContainer">
+                        <div className="aboutStreamerInfo">
+                            <div className="aboutStreamerInfoLeft">
+                                <div className="aboutStreamerAndCheckmark">
+                                        <div className="streamerAboutName">
+                                            About {streamerInfo.name}
+                                        </div>
+                                        {streamerInfo.checkmark === "partner" &&
+                                        <img style={{width: "20px", height: "20px"}} src={require('../../icons/verifiedTwo.png')}></img>
+                                        }
+                                </div>
+                                <div className="aboutFollowers">
+                                        <div className="aboutFollowersSection">
+                                            {streamerInfo.followers>1000000 ? 
+                                            `${(streamerInfo.followers/1000000).toFixed(1)}M`    
+                                            :
+                                            streamerInfo.followers>1000 ?
+                                            `${(streamerInfo.followers /1000).toFixed(0)}k`:
+                                            `${streamerInfo.followers}`
+                                            }
+                                            <div style={{color: "#B8B2A8"}}>followers</div>
+                                        </div>
+                                </div>
+                                <div className="aboutStreamerDescription">
+                                        {streamerInfo.description}
+                                </div>
+                            </div>
+                            <div className="aboutStreamerInfoRight">
+                        
                             </div>
                         </div>
                     </div>

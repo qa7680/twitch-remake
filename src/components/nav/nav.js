@@ -145,15 +145,15 @@ const Nav = () => {
     }
     }, [inputValue]);
 
-
-
     return(
             <nav className="navigation">
                 <div className="left">
                     <Link to = "/">
                     <img className="twitchIcon" alt="twitch icon" src={require("../../icons/navIcon3.png")} style = {{width:"32px", height: "32px"}}></img>
                     </Link>
+                    <Link className="linkBrowse" to = "/directory">
                     <button className="browse">Browse</button>
+                    </Link>
                     <div className="dropdown">
                         <img onClick={hideMore} ref={moreNode} alt="more options" className="moreVert" title="more" src={require("../../icons/verticalDots2.png")} />
                         { moreToggled &&

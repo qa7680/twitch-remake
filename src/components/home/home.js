@@ -1,10 +1,11 @@
 import "./home.scss"
 
-const home = () => {
+const Home = () => {
+    
     return(
         <div className="homeContainer">
             Home Page
         </div>
     )
 }
-export default home;
+export default Home;

@@ -68,7 +68,7 @@ iframe{
 .streamerInfo{
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
 }
 .leftSideStreamerInfo,
 .rightSideStreamerInfo{
@@ -91,18 +91,18 @@ iframe{
     position: relative;
     align-items: center;
 }
-.profileAndLive:hover{
-    cursor: pointer;
-}
+
 .profileAndLiveImage{
     width: 64px;
     height: 64px;
     border-radius:9000px; 
     border:2px solid #522399;
 }
-.profileAndLive:hover + .profileAndLiveImage::after{
-    font-size: larger;
+.profileAndLiveImage:hover{
+    cursor: pointer;
+    border: 2px solid rgb(126, 124, 124);
 }
+
 .isLiveStreamer{
     background-color: rgb(196, 30, 30);
     text-align: center;
@@ -130,7 +130,7 @@ iframe{
 .streamerGameName{
     color:#B481FF;
     text-decoration: none;
-    max-width: fit-content;
+    min-width: fit-content;
 }
 .streamerGameName:hover{
     text-decoration: underline;
@@ -162,14 +162,14 @@ iframe{
 .followBtn{
     background-color: #9147ff;
     padding: 0.3rem 0.7rem;
-    border-radius: 0.4rem;
+    border-radius: 0.25rem;
     align-items: center;
 }
 .subscribeBtn{
     background-color: hsla(0, 0%, 100%, 0.15);
     align-items: center;
     padding: 0.3rem 0.7rem;
-    border-radius: 0.4rem;
+    border-radius: 0.25rem;
 }
 .followBtn:hover{
     background-color: #772ce8;
@@ -205,4 +205,82 @@ iframe{
     align-items: center;
     cursor: pointer;
     gap: 0.3rem;
+}
+.aboutStreamerInfoContainer{
+    padding: 1.5rem 0;
+    padding-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+}
+.aboutStreamerInfo{
+    min-width: 70%;
+    max-width: 70%;
+    display: flex;
+    padding: 2rem;
+    background-color: #131516;
+    border-radius: 0.4rem;
+}
+.aboutStreamerInfoLeft{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.aboutStreamerAndCheckmark{
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+.streamerAboutName{
+    font-size: 22px;
+}
+.aboutFollowersSection{
+    font-size: 14px;
+    display: flex;
+    gap: 0.4em;
+}
+.aboutStreamerDescription{
+    font-size: 14px;
+    font-weight: normal;
+}
+.streamerNotLive{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.3rem 2.5rem;
+}
+.streamerNotLiveLeftSide{
+    display: flex;
+    gap: 0.7rem;
+}
+.streamerNotLiveImage{
+    width: 64px;
+    height: 64px;
+    border-radius: 9000px;
+    border: 2px solid grey;
+}
+.streamerNotLiveImage:hover{
+    cursor: pointer;
+    border: 2px solid orange;
+}
+.streamerNotLiveNameCheckmark{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.streamerNotLiveName{
+    font-size: 23px;
+}
+.streamerNotLiveName:hover{
+    text-decoration: underline;
+    text-decoration-color: #B481FF;
+    cursor: pointer;
+}
+.streamerNotLiveNameCheckmarkFollowers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.streamerNotLiveRightSideFollowSubscribe{
+   display: flex;
+   align-items: center;
+   gap:0.7rem;
 }

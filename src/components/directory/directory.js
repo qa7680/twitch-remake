@@ -1,0 +1,156 @@
+import React, { useEffect, useState } from "react";
+import "./directory.scss"
+
+const Directory = () => {
+
+    const [ categories, setCategories ] = useState(true);
+    const [ liveChannels, setLiveChannels ] = useState(false);
+    const [ topGames, setTopGames ] = useState([]);
+    const [ topStreams, setTopStreams ] = useState([]);
+
+    const clickedCategories = () => {
+        setCategories(true);
+        setLiveChannels(false);
+    };
+
+    const clickedLiveChannels = () => {
+        setCategories(false);
+        setLiveChannels(true);
+    };
+
+    useEffect(() => {
+        fetch('https://api.twitch.tv/helix/games/top?first=72', {
+            mode: "cors", method: "GET", headers: {
+                "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
+                "Client-Id": `${process.env.REACT_APP_CLIENT_ID}`
+            }
+        })  
+            .then(resOne => resOne.json())
+            .then(resOne => {
+                resOne.data.forEach((game) => {
+                    setTopGames(
+                        topGames => [...topGames, {
+                            name: game.name,
+                            gameImage: game.box_art_url.replace("{width}x{height}", "171x228")
+                        }]
+                    )
+                })
+
+                fetch('https://api.twitch.tv/helix/streams?first=100',{
+                    mode: "cors", method: "GET", headers: {
+                        "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
+                        "Client-Id": `${process.env.REACT_APP_CLIENT_ID}`
+                    }
+                })
+                    .then(resTwo=>resTwo.json())
+                    .then(resTwo=>{
+                        const streamsUrl = resTwo.data.reduce((previousValue, currentValue) => 
+                             previousValue + `login=${currentValue.user_login}&`,
+                            '?'
+                        )     
+
+                        fetch(`https://api.twitch.tv/helix/users${streamsUrl}`,{
+                            mode: "cors", method: "GET", headers: {
+                                "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
+                                "Client-Id": `${process.env.REACT_APP_CLIENT_ID}`
+                            }
+                        })
+                            .then(resThree => resThree.json())
+                            .then(resThree => {
+                                    resTwo.data.forEach((streamer) => {
+                                        for(let i =0; i<resThree.data.length ; i++)  {
+                                            
+                                                if(resThree.data[i].login === streamer.user_login){
+                                                    
+                                                    setTopStreams(
+                                                        topStreams => [...topStreams, {
+                                                            name: streamer.user_name, 
+                                                            title: streamer.title,
+                                                            viewers: streamer.viewer_count,
+                                                            game: streamer.game_name,
+                                                            thumbnail: streamer.thumbnail_url.replace("{width}x{height}", "293x165"),
+                                                            profileImg: resThree.data[i].profile_image_url
+                                                        }]
+                                                    )
+                                                    break;
+                                                }
+                                        }   
+                                    })
+                            })
+                            .catch(err => console.error(err));         
+                    })
+                    .catch(err => console.error(err));
+            })
+            .catch(err => console.error(err));
+
+    }, [])
+
+    return(
+        <div className="directoryContainer">
+            <h1 className="browseHeader">Browse</h1>
+            <div className="categoriesHeaders">
+                <div className="sectionsContainer">
+                    Games
+                </div>
+                <div className="sectionsContainer">
+                    IRL
+                </div>
+                <div className="sectionsContainer">
+                    Music
+                </div>
+                <div className="sectionsContainer">
+                    Esports
+                </div>
+                <div className="sectionsContainer">
+                    Creative
+                </div>
+            </div>
+            <div className="categoriesLiveChannels">
+                {!categories ? 
+                <p className="categoriesPara" onClick={clickedCategories}>Categories</p>
+                : 
+                <p className="categoriesParaActive" onClick={clickedCategories}>Categories</p>
+                }
+                {!liveChannels ?
+                <p className="liveChannelsPara" onClick={clickedLiveChannels}>Live Channels</p>
+                :
+                <p className="liveChannelsParaActive" onClick={clickedLiveChannels}>Live Channels</p>
+                }
+            </div>
+            {categories ?
+            <div className="directoryMainContentCategories">
+                {topGames.map((game) => {
+                    return <div className="gameContainer">
+                        <div class="gameImageHolder"><img className="gameDirectoryImage" src={game.gameImage}></img></div>
+                        <div className="directoryGameName">{game.name}</div>
+                    </div>
+                })}
+            </div>
+            :
+            <div className="directoryMainContentChannels">
+                {topStreams.map((streamer) => {
+                    return <div className="streamerContainer">
+                        <div class="streamerImageHolder">
+                            <div className="thumbnailLive">LIVE</div>
+                            <img className="streamerDirectoryImage" src={streamer.thumbnail}></img>
+                            <div className="thumbnailCurrentViewers">{parseFloat((streamer.viewers/1000)).toFixed(1)}k viewers</div>
+                        </div>
+                        <div className="streamerImgAndTitleAndGame">
+                            <div className="streamerImgAndTitleAndGameLeft">
+                                <img className="streamerImgAndTitleAndGameLeftImg" src={streamer.profileImg}></img>
+                            </div>
+                            <div className="streamerImgAndTitleAndGameRight">
+                                <div className="streamerImgAndTitleAndGameRightTitle">{streamer.title}</div>
+                                <div className="streamerImgAndTitleAndGameRightName">{streamer.name}</div>
+                                <div className="streamerImgAndTitleAndGameRightGame">{streamer.game}</div>
+                            </div>
+                        </div>
+                    </div>
+                })}
+            </div>
+            }
+        </div>
+    )
+};
+
+export default Directory;
