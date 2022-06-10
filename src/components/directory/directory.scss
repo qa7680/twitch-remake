@@ -3,10 +3,18 @@
     width: 100%;
     color: #DFDCD7;
     padding: 0rem 1rem;
+    padding-left: 1.5rem;
     padding-bottom: 3rem;
     display: flex;
     flex-direction: column;
     overflow: scroll;
+}
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.5); 
+    border-radius: 19px;
 }
 .browseHeader{
     font-size: 3.2rem;
@@ -79,6 +87,8 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem; 
+    align-items: center;
+    justify-content: center;
 }
 .streamerImgAndTitleAndGame{
     display: flex;
@@ -105,7 +115,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 251px;
+    width: 231px;
     font-size: 15px;
     color: #DFDCD7;
 }
@@ -115,7 +125,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 251px;
+    width: max-content;
+    max-width: 251px;
 }
 .streamerImgAndTitleAndGameRightTitle:hover, 
 .streamerImgAndTitleAndGameRightName:hover,
@@ -148,4 +159,19 @@
 }
 .streamerImgAndTitleAndGameLeftImg{
     cursor: pointer;
+}
+.streamerImageHolder a{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    padding-right: 0.5rem;
+}
+.streamerImgAndTitleAndGame a{
+    text-decoration: none;
+    color: inherit;
+}
+.gameContainer a{
+    text-decoration: none;
+    color: inherit;
 }

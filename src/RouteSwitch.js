@@ -5,6 +5,7 @@ import Sidebar from "./components/sidebar/sidebar";
 import "../src/RouteSwitch.scss";
 import Streamer from "./components/streamer/streamer";
 import Directory from "./components/directory/directory";
+import Game from "./components/game/game";
 
 const RouteSwitch = () => {
     return(
@@ -17,6 +18,7 @@ const RouteSwitch = () => {
                         <Route path = "/" element ={ <Home /> } />
                         <Route path = "/:streamer" element={ <Streamer />} />
                         <Route path = "/directory" element = { <Directory /> } />
+                        <Route path = "/directory/game/:name" element = { <Game /> } />
                     </Routes>
                 </div>
             </div>

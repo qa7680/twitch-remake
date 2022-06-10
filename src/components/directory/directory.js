@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./directory.scss"
 
 const Directory = () => {
@@ -64,6 +65,7 @@ const Directory = () => {
                                                     
                                                     setTopStreams(
                                                         topStreams => [...topStreams, {
+                                                            login: streamer.user_login,
                                                             name: streamer.user_name, 
                                                             title: streamer.title,
                                                             viewers: streamer.viewer_count,
@@ -121,8 +123,8 @@ const Directory = () => {
             <div className="directoryMainContentCategories">
                 {topGames.map((game) => {
                     return <div className="gameContainer">
-                        <div class="gameImageHolder"><img className="gameDirectoryImage" src={game.gameImage}></img></div>
-                        <div className="directoryGameName">{game.name}</div>
+                        <Link to = {`/directory/game/${game.name}`}><div class="gameImageHolder"><img className="gameDirectoryImage" src={game.gameImage}></img></div></Link>
+                        <Link to = {`/directory/game/${game.name}`}><div className="directoryGameName">{game.name}</div></Link>
                     </div>
                 })}
             </div>
@@ -130,18 +132,21 @@ const Directory = () => {
             <div className="directoryMainContentChannels">
                 {topStreams.map((streamer) => {
                     return <div className="streamerContainer">
-                        <div class="streamerImageHolder">
+                            <div class="streamerImageHolder"><Link to = {`/${streamer.login}`}>
+                            
                             <div className="thumbnailLive">LIVE</div>
                             <img className="streamerDirectoryImage" src={streamer.thumbnail}></img>
                             <div className="thumbnailCurrentViewers">{parseFloat((streamer.viewers/1000)).toFixed(1)}k viewers</div>
+                            </Link>
+                            
                         </div>
                         <div className="streamerImgAndTitleAndGame">
                             <div className="streamerImgAndTitleAndGameLeft">
-                                <img className="streamerImgAndTitleAndGameLeftImg" src={streamer.profileImg}></img>
+                            <Link to = {`/${streamer.login}`}><img className="streamerImgAndTitleAndGameLeftImg" src={streamer.profileImg}></img></Link>
                             </div>
                             <div className="streamerImgAndTitleAndGameRight">
-                                <div className="streamerImgAndTitleAndGameRightTitle">{streamer.title}</div>
-                                <div className="streamerImgAndTitleAndGameRightName">{streamer.name}</div>
+                            <Link to = {`/${streamer.login}`}><div className="streamerImgAndTitleAndGameRightTitle">{streamer.title}</div></Link>
+                            <Link to = {`/${streamer.login}`}><div className="streamerImgAndTitleAndGameRightName">{streamer.name}</div></Link>
                                 <div className="streamerImgAndTitleAndGameRightGame">{streamer.game}</div>
                             </div>
                         </div>
