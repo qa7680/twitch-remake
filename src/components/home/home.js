@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import "./home.scss"
 
 const Home = () => {
-    
     return(
         <div className="homeContainer">
             Home Page

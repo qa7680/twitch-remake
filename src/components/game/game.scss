@@ -1,0 +1,66 @@
+.dirGameContainer{
+    display: flex;
+    background-color: #0e0e10;
+    width: 100%;
+    color: #EFEFF1;
+    flex-direction: column;
+    padding:1.5rem; 
+    overflow: scroll;
+}
+.dirGameContainerDescription{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.dirGameContainerDescriptionRightFollowBtn{
+    display: flex;
+    gap: 0.5rem;
+    background-color: #9147FF;
+    width: max-content;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.dirGameContainerDescriptionRightFollowBtn:hover{
+    background-color: #772ce8;    
+}
+.dirGameContainerSections{
+    display: flex;
+    gap: 2rem;
+    font-size: large;
+}
+.liveChannelsSectionClicked,
+.videosClicked,
+.clipsSectionClicked{
+    text-decoration: underline;
+    text-decoration-thickness: 0.18rem;
+    text-underline-offset: 0.6rem;
+    color: #b481ff;
+    cursor: pointer;
+}
+.dirGameContainerSectionsNotClicked{
+    cursor: pointer;
+}
+.clipTime{
+    font-size: small;
+    font-weight: bold;
+    transform: translateX(35%) translateY(130%);
+    background: rgba(0,0,0,.6);
+    width: max-content;
+    padding: 0.2rem 0.3rem;
+    border-radius: 2px;
+}
+.clipDate{
+    font-size: small;
+    font-weight: bold;
+    transform: translateX(-15%) translateY(-195%);
+    background: rgba(0,0,0,.6);
+    width: max-content;
+    padding: 0.2rem 0.3rem;
+    border-radius: 2px;
+}
+.viewersAndTime{
+    display: flex;
+    justify-content: space-between;
+}

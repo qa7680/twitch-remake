@@ -136,7 +136,15 @@ const Directory = () => {
                             
                             <div className="thumbnailLive">LIVE</div>
                             <img className="streamerDirectoryImage" src={streamer.thumbnail}></img>
-                            <div className="thumbnailCurrentViewers">{parseFloat((streamer.viewers/1000)).toFixed(1)}k viewers</div>
+                            {streamer.viewers >1000 ?
+                            <div className="thumbnailCurrentViewers">
+                                {parseFloat((streamer.viewers/1000)).toFixed(1)}k viewers
+                            </div>
+                            :
+                            <div className="thumbnailCurrentViewers">
+                                {streamer.viewers} viewers
+                            </div>
+                            }
                             </Link>
                             
                         </div>
@@ -147,7 +155,7 @@ const Directory = () => {
                             <div className="streamerImgAndTitleAndGameRight">
                             <Link to = {`/${streamer.login}`}><div className="streamerImgAndTitleAndGameRightTitle">{streamer.title}</div></Link>
                             <Link to = {`/${streamer.login}`}><div className="streamerImgAndTitleAndGameRightName">{streamer.name}</div></Link>
-                                <div className="streamerImgAndTitleAndGameRightGame">{streamer.game}</div>
+                            <Link to = {`/directory/game/${streamer.game}`}><div className="streamerImgAndTitleAndGameRightGame">{streamer.game}</div></Link>
                             </div>
                         </div>
                     </div>
