@@ -20,7 +20,7 @@ const Directory = () => {
     };
 
     useEffect(() => {
-        fetch('https://api.twitch.tv/helix/games/top?first=72', {
+        fetch('https://api.twitch.tv/helix/games/top?first=100', {
             mode: "cors", method: "GET", headers: {
                 "Authorization": `Bearer ${process.env.REACT_APP_AUTHORIZATION_KEY}`,
                 "Client-Id": `${process.env.REACT_APP_CLIENT_ID}`
@@ -92,19 +92,19 @@ const Directory = () => {
             <h1 className="browseHeader">Browse</h1>
             <div className="categoriesHeaders">
                 <div className="sectionsContainer">
-                    Games
+                    <Link className="sectionsContainerLinks" to = "/directory/game/Apex Legends">Games</Link>
                 </div>
                 <div className="sectionsContainer">
-                    IRL
+                <Link className="sectionsContainerLinks" to = "/directory/game/Just Chatting">IRL</Link>
                 </div>
                 <div className="sectionsContainer">
-                    Music
+                <Link className="sectionsContainerLinks" to = "/directory/game/Music">Music</Link>
                 </div>
                 <div className="sectionsContainer">
-                    Esports
+                <Link className="sectionsContainerLinks" to = "/directory/game/League of Legends">Esports</Link>
                 </div>
                 <div className="sectionsContainer">
-                    Creative
+                <Link className="sectionsContainerLinks" to = "/directory/game/Art">Creative</Link>
                 </div>
             </div>
             <div className="categoriesLiveChannels">

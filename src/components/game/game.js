@@ -12,6 +12,8 @@ const Game = () => {
     const [ liveChannelsSection, setLiveChannelsSection ] = useState(true);
     const [ videos, setVideos ] = useState(false);
     const [ clips, setClips ] = useState(false);
+    const [ modalOpen, setModalOpen ] = useState(false);
+    const [ modalClip, setModalClip ] = useState('');
 
     const liveChannelsClicked = () => {
         setLiveChannelsSection(true);
@@ -30,6 +32,16 @@ const Game = () => {
         setLiveChannelsSection(false);
         setVideos(false);
     };
+
+    const openModal = (clipUrl) => {
+        setModalOpen(true);
+        setModalClip(clipUrl);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false)
+    };
+
 
     useEffect(() => {
         fetch(`https://api.twitch.tv/helix/games?name=${name}`,{
@@ -93,7 +105,7 @@ const Game = () => {
                                 })
                                     .then(resFour=>resFour.json())
                                     .then(resFour=>{
-                                        setClipsContent(resFour.data)
+                                        setClipsContent(resFour.data);
                                     })
                                     .catch(err=>console.error(err));
                         })
@@ -103,7 +115,6 @@ const Game = () => {
             })
             .catch(err => console.error(err));
     }, []);
-    console.log(clipsContent)
     
     return(
         <div className="dirGameContainer">
@@ -179,7 +190,7 @@ const Game = () => {
                     <div className="directoryMainContentChannels">
                 {clipsContent.map((clip) => {
                     return <div className="streamerContainer">
-                            <div class="streamerImageHolder"><Link to = {`/${clip.login}`}>
+                            <div class="streamerImageHolder">
                             
                             {clip.duration === 60 ? 
                             <div className="clipTime">
@@ -190,7 +201,7 @@ const Game = () => {
                                 0:{Math.floor(clip.duration)}
                             </div>
                             }
-                            <img style={{width: "293px", height: "165px"}} className="streamerDirectoryImage" src={clip.thumbnail_url}></img>
+                            <img onClick={() => openModal(clip.id)} style={{width: "293px", height: "165px"}} className="streamerDirectoryImage" src={clip.thumbnail_url}></img>
                             <div className="viewersAndTime">
                                 {
                                     clip.view_count>1000000 ?
@@ -223,20 +234,36 @@ const Game = () => {
                                 </div>
                                 }
                             </div>
-                            </Link>
+                            
                             
                         </div>
                         <div className="streamerImgAndTitleAndGame">
                             <div className="streamerImgAndTitleAndGameRight">
-                                <Link to = {`/${clip.login}`}><div className="streamerImgAndTitleAndGameRightTitle">{clip.title}</div></Link>
-                                <div className="streamerImgAndTitleAndGameRightName">{clip.broadcaster_name}</div>
-                                <div className="streamerImgAndTitleAndGameRightGame">Cliped by {clip.creator_name}</div>
+                               <div onClick={() => openModal(clip.id)} className="streamerImgAndTitleAndGameRightTitle">{clip.title}</div>
+                                <Link to = {`/${clip.broadcaster_name}`}><div className="streamerImgAndTitleAndGameRightName">{clip.broadcaster_name}</div></Link>
+                                <Link to = {`/${clip.creator_name}`}><div className="streamerImgAndTitleAndGameRightGame">Cliped by {clip.creator_name}</div></Link>
                             </div>
                         </div>
                     </div>
                 })}
             </div>
+                
                 }
+                <div>
+                        {modalOpen &&
+                            <div className="clipModalContainer">
+                                <div className="modalClipVideo">
+                                <iframe className="clipFrameVideo"
+                                    src={`https://clips.twitch.tv/embed?clip=${modalClip}&parent=localhost`}
+                                    height="300px"
+                                    width="300px"
+                                    allowfullscreen="true">
+                                </iframe>
+                                </div>
+                                <div onClick={closeModal} className="closeModalButton">x</div>
+                            </div>
+                        }
+                        </div>
             </div>
         </div>
     )

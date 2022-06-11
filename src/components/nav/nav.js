@@ -41,14 +41,17 @@ const Nav = () => {
           setMoreToggled(false);
           setPrimeToggled(false);
           setProfileToggled(false);
+          setInputClicked(false);
           window.focus();
        }else if (document.activeElement === document.getElementById("ifrChat")){
             setPrimeToggled(false);
             setProfileToggled(false);
             setMoreToggled(false);
+            setInputClicked(false);
             window.focus();
        }
     }
+
 
     const outsidePrime = (e) => {
         if(primeNode.current?.contains(e.target) ||
