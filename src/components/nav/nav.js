@@ -2,7 +2,7 @@ import "..//nav/nav.scss";
 import React, { useState, useEffect, useRef } from "react";
 import  "../searchDropdown/searchDropdown";
 import SearchDropdown from "../searchDropdown/searchDropdown";
-import { Link } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom"; 
 
 const Nav = () => {
 
@@ -20,6 +20,7 @@ const Nav = () => {
     const profileContent = useRef();
     const searchContent = useRef();
     const inputRef = useRef();
+    const navigate = useNavigate();
 
     const hideMore = () => {
         setMoreToggled(!moreToggled);
@@ -196,8 +197,18 @@ const Nav = () => {
                 
                 <div className="dropdownSearch">
                     <div className="center">
-                        <input ref={inputRef} onClick={onInputClicked} onChange={onInputChange} placeholder="Search" className="search" value={inputValue}></input>
-                        <img alt="search" className="searchBtn" src= {require("../../icons/searchIcon.png")} style = { {width: "25px", height: "25px"} }></img>
+                        <input onKeyDown={(e) => {
+                            if(e.key === "Enter" && inputValue.length>0){
+                                navigate(`/search/${inputValue}`);
+                                setInputClicked(false);
+                            }
+                        }} ref={inputRef} onClick={onInputClicked} onChange={onInputChange} placeholder="Search" className="search" value={inputValue}></input>
+                        {/* <Link to = {`/search/${inputValue}`}><img alt="search" className="searchBtn" src= {require("../../icons/searchIcon.png")} style = { {width: "25px", height: "25px"} }></img></Link> */}
+                        <img onClick={(e) =>{
+                            if(inputValue.length>0){
+                            navigate(`/search/${inputValue}`)
+                            }
+                        }} alt="search" className="searchBtn" src= {require("../../icons/searchIcon.png")} style = { {width: "25px", height: "25px"} }></img>
                     </div>
                 {inputClicked ?
                 <SearchDropdown searchArray={searchArray} ref = {searchContent}/>

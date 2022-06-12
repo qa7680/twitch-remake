@@ -1,0 +1,85 @@
+.queryContainer{
+    background-color: #0b0c0d;
+    width: 100%;
+    color: #D5D1CC;
+    position: relative;
+    overflow: scroll;
+}
+.queryContainerInside {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+    padding-bottom:5rem;
+    gap: 2rem;
+}
+.queryChannelsSection{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.queryChannelsTitle, .queryCategoriesTitle{
+    font-size: larger;
+}
+.queryItemThumbnail{
+    width: 214px;
+    height: 120px;
+}
+.queryItemContainer{
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    cursor: pointer;
+    width: max-content;
+}
+.queryLiveText{
+    position: absolute;
+    background-color: rgb(215, 16, 16);
+    padding: 0.2rem 0.3rem;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0.6rem;
+}
+.queryItemRightSide{
+    font-size: smaller;
+}
+.queryItemUserName{
+    font-size: 18px;
+}
+.queryItemUserName a{
+    text-decoration: none;
+    color: inherit;
+}
+.queryItemUserName:hover, .queryItemRightSideGame:hover{
+    cursor: pointer;
+    color: #a468ff;
+}
+.queryItemRightSideGame a{
+    text-decoration: none;
+    color: inherit;
+}
+.queryCategoriesSection{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: max-content;
+}
+.categoriesImage{
+    width: 90px;
+    height: 120px;
+}
+.categoryItem{
+    display: flex;
+    gap: 1rem;
+    
+}
+.categoryItemRight a{
+    color: inherit;
+    text-decoration: none;
+}
+.categoryItem{
+    font-size: 18px;
+}
+.categoryName:hover{
+    color: #a468ff;
+}

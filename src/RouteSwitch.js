@@ -6,6 +6,7 @@ import "../src/RouteSwitch.scss";
 import Streamer from "./components/streamer/streamer";
 import Directory from "./components/directory/directory";
 import Game from "./components/game/game";
+import Query from "./components/query/query";
 
 const RouteSwitch = () => {
     return(
@@ -19,6 +20,7 @@ const RouteSwitch = () => {
                         <Route path = "/:streamer" element={ <Streamer />} />
                         <Route path = "/directory" element = { <Directory /> } />
                         <Route path = "/directory/game/:name" element = { <Game /> } />
+                        <Route path = "/search/:queryValue" element = { <Query /> } />
                     </Routes>
                 </div>
             </div>
