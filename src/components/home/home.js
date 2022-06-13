@@ -28,8 +28,6 @@ const Home = () => {
         setCurrent(current === 0 ? randomChannels.length-1 : current - 1 )
     };
 
-    console.log(current);
-
     useEffect(() => {
         fetch(`https://api.twitch.tv/helix/streams?first=100`, {
             mode: "cors", method: "GET", headers: {

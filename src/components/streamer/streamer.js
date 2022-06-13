@@ -214,10 +214,10 @@ const Streamer = () => {
                                 <div className="aboutFollowers">
                                         <div className="aboutFollowersSection">
                                             {streamerInfo.followers>1000000 ? 
-                                            `${(streamerInfo.followers/1000000).toFixed(1)}M`    
+                                            `${parseInt((streamerInfo.followers/1000000).toFixed(1))}M`    
                                             :
                                             streamerInfo.followers>1000 ?
-                                            `${(streamerInfo.followers /1000).toFixed(0)}k`:
+                                            `${parseInt((streamerInfo.followers /1000).toFixed(0))}k`:
                                             `${streamerInfo.followers}`
                                             }
                                             <div style={{color: "#B8B2A8"}}>followers</div>
