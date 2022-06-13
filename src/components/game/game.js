@@ -187,7 +187,7 @@ const Game = () => {
                 }
                 {
                     clips && 
-                    <div className="directoryMainContentChannels">
+                    <div className="directoryMainContentChannelsClips">
                 {clipsContent.map((clip) => {
                     return <div className="streamerContainer">
                             <div class="streamerImageHolder">

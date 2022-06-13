@@ -1,4 +1,179 @@
 .homeContainer{
     width: 100%;
-    padding: 1rem;
+    padding: 2rem;
+    padding-top: 0;
+    background-color: #0e0e10;
+    color: #dfdcd7;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 4rem;
+    overflow: scroll;
 }
+.liveHomeCategories{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.homeGamesContainer{
+    display: flex;
+    gap:0.5rem;
+    flex-wrap: wrap;
+    
+}
+.homeGameContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.homeContainer a{
+    text-decoration: none;
+    color: inherit;
+}
+.homeContainer a:hover{
+    color: #bf94ff;
+}
+.categoriesInPurple{
+    color: #b481ff;
+}
+.categoriesSuggestion{
+    font-size: 1.2rem;
+}
+.homeGameTitle{
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+.liveChannelsHomeContainer{
+    display: flex;
+    gap: .46rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.liveHomeChannels{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.homeChannelsContainer{
+    display: flex;
+}
+.topChannelContainer{
+    display: flex;
+    flex-direction: column;
+}
+.topChannelContainer{
+    display: flex;
+    gap: 2rem;
+}
+.topChannelContainerTop a{
+    display: flex;
+    flex-direction: column;
+}
+.liveHomeChannelsSuggestion{
+    font-size: 1.2rem;
+}
+.liveHomeChannelsVideoAndInfo{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.liveHomeChannels{
+    display: flex;
+    flex-direction: column;
+}
+.liveHomeChannelsVideoAndInfoTop{
+    position: relative;
+}
+.liveHomeChannelsVideoAndInfoTopLive{
+    position: absolute;
+    margin: 0.7rem;
+    width: max-content;
+    background-color: rgb(171, 17, 17);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-size: small;
+    font-weight: bold;
+}
+.liveHomeChannelsVideoAndInfoTopViewers{
+    position: absolute;
+    bottom:0;
+    margin: 0.7rem;
+}
+
+.liveHomeChannelsVideoAndInfoTopViewersBox{
+    font-size: small;
+    background: rgba(0,0,0,.6);
+    padding: 0.2rem;
+    width: max-content;
+    border-radius: 2px;
+}
+.liveHomeChannelsVideoAndInfo{
+    gap: 0.5rem;
+}
+.liveHomeChannelsVideoAndInfo a:hover{
+    color:inherit;
+}
+.liveHomeChannelsVideoAndInfoDescription{
+    display: flex;
+    gap: 0.5rem;
+}
+.liveHomeChannelsVideoAndInfoDescriptionLeftImage{
+    width:40px;
+    height: 40px;
+    border-radius: 9000px;
+}
+.liveHomeChannelsVideoAndInfoDescriptionRightTitle{
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: min-content;
+    max-width: 230px;
+    font-size: 14px;
+}
+.liveHomeChannelsVideoAndInfoDescriptionRightName,
+.liveHomeChannelsVideoAndInfoDescriptionRightGame{
+    width: max-content;
+    font-size: small;
+    color: #c1bfbd;
+}
+.liveHomeChannelsVideoAndInfoDescriptionRightTitle:hover,
+.liveHomeChannelsVideoAndInfoDescriptionRightName:hover,
+.liveHomeChannelsVideoAndInfoDescriptionRightGame:hover{
+    color: #b481ff;
+}
+.homePageStreamIframe{
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 4px 21px 3px rgba(0,0,0,0.69);
+};
+.videoSliderContainer{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+    transition-property: opacity;
+    transition-duration: 350ms;
+};
+.videoSliderContainer:active{
+    opacity: 0;
+}
+.rightArrowSlide{
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    user-select: none;
+}
+.leftArrowSlide{
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
