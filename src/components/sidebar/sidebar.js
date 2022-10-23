@@ -18,7 +18,7 @@ const Sidebar = () => {
         }}) 
             .then(res => {return res.json() })
             .then(res => {
-
+                
                 //call top 100 streamers, randomize and then pick 15
                 let topFiftyStreamers = res.data;
                 topFiftyStreamers.sort((a,b) => Math.random() - 0.5);

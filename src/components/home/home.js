@@ -92,7 +92,7 @@ const Home = () => {
                 {randomChannels.map((channel, index) => {
             return <div className={index === current ? "slideActive" : "slide"}>
                     {index === current &&
-                        <iframe className="homePageStreamIframe" src={`https://player.twitch.tv/?channel=${channel.user_login}&parent=localhost`}
+                        <iframe className="homePageStreamIframe" src={`https://player.twitch.tv/?channel=${channel.user_login}&parent=https://qa7680-twitch-clone.netlify.app/`}
                         width = "600px"
                         height = "340px"
                         allowFullScreen = "true"/>
