@@ -136,10 +136,7 @@ const Game = () => {
                 <p className="liveChannelsSectionClicked" onClick={liveChannelsClicked}>Live Channels</p>
                 :<p className="dirGameContainerSectionsNotClicked" onClick={liveChannelsClicked}>Live Channels</p>
                 }
-                {videos ?
-                <p className="videosClicked" onClick={videosClicked}>Videos</p>
-                :<p className="dirGameContainerSectionsNotClicked" onClick={videosClicked}>Videos</p>
-                }
+                
                 {clips ?
                 <p className="clipsSectionClicked" onClick={clipsClicked}>Clips</p>
                 :<p className="dirGameContainerSectionsNotClicked" onClick={clipsClicked}>Clips</p>
@@ -181,10 +178,7 @@ const Game = () => {
                 })}
             </div>
                 }
-                {
-                    videos && 
-                    <div>Videos</div>
-                }
+                
                 {
                     clips && 
                     <div className="directoryMainContentChannelsClips">

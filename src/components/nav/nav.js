@@ -202,8 +202,7 @@ const Nav = () => {
                                 navigate(`/search/${inputValue}`);
                                 setInputClicked(false);
                             }
-                        }} ref={inputRef} onClick={onInputClicked} onChange={onInputChange} placeholder="Search" className="search" value={inputValue}></input>
-                        {/* <Link to = {`/search/${inputValue}`}><img alt="search" className="searchBtn" src= {require("../../icons/searchIcon.png")} style = { {width: "25px", height: "25px"} }></img></Link> */}
+                        }} ref={inputRef} onClick={onInputClicked} onChange={onInputChange} placeholder="Search" className="search" value={inputValue} maxLength = "30"></input>
                         <img onClick={(e) =>{
                             if(inputValue.length>0){
                             navigate(`/search/${inputValue}`)
