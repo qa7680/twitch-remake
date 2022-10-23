@@ -248,7 +248,7 @@ const Game = () => {
                             <div className="clipModalContainer">
                                 <div className="modalClipVideo">
                                 <iframe className="clipFrameVideo"
-                                    src={`https://clips.twitch.tv/embed?clip=${modalClip}&parent=localhost`}
+                                    src={`https://clips.twitch.tv/embed?clip=${modalClip}&parent=qa7680-twitch-clone.netlify.app`}
                                     height="300px"
                                     width="300px"
                                     allowfullscreen="true">

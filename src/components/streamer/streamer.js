@@ -99,7 +99,7 @@ const Streamer = () => {
        <div className="twitchContainer">
             <div class="twitchPlayerContainer">
                 <iframe id = "ifr" className="twitchPlayer"
-                    src= {`https://player.twitch.tv/?channel=${streamer}&parent=localhost`}
+                    src= {`https://player.twitch.tv/?channel=${streamer}&parent=qa7680-twitch-clone.netlify.app`}
                     height="400px"
                     width="100%"
                     allowfullscreen="true">
@@ -237,7 +237,7 @@ const Streamer = () => {
             </div>
                           
                 {hideChat &&
-                <iframe id = "ifrChat" className="chatPlayer" src={`https://www.twitch.tv/embed/${streamer}/chat?darkpopout&parent=localhost`}
+                <iframe id = "ifrChat" className="chatPlayer" src={`https://www.twitch.tv/embed/${streamer}/chat?darkpopout&parent=qa7680-twitch-clone.netlify.app`}
                     
                     width="700px"
                     >
