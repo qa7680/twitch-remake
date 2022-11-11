@@ -124,7 +124,7 @@ const Streamer = () => {
                             </div>
                             <div className="nameTitleGame">
                                 <div className="streamerNameCheckmark">
-                                    <div className="streamerNameNextToCheck" style={{fontSize: "large"}}><a href={streamerInfo.name}>{streamerInfo.name}</a></div>
+                                    <div className="streamerNameNextToCheck" style={{fontSize: "large"}}><a href={streamer}>{streamerInfo.name}</a></div>
                                     {streamerInfo.checkmark === "partner" &&
                                     <img style={{width: "16px", height:"16px"}} src={require('../../icons/verifiedOne.png')}></img>
                                     }

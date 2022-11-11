@@ -70,9 +70,10 @@ const Home = () => {
                                                     game: res.data[i].game_name,
                                                     viewers: res.data[i].viewer_count,
                                                     title: res.data[i].title,
-                                                    thumbnail: res.data[i].thumbnail_url
+                                                    thumbnail: res.data[i].thumbnail_url,
+                                                    user_name: user.login                                                   
                                                 }]
-                                            )
+                                            )                                            
                                         }
                                     }
                                 })
@@ -108,7 +109,7 @@ const Home = () => {
                     {topChannels.map((channel) => {
                                 return <div class="liveHomeChannelsContainer">
                             <div className="liveHomeChannelsVideoAndInfo">
-                                <Link to = {`/${channel.name}`}>
+                                <Link to = {`/${channel.user_name}`}>
                                 <div className="liveHomeChannelsVideoAndInfoTop">
                                         <div className="liveHomeChannelsVideoAndInfoTopLive">LIVE</div>
                                         <div className="liveHomeChannelsVideoAndInfoTopViewers">
@@ -127,15 +128,15 @@ const Home = () => {
                                 </Link>
                                 <div className="liveHomeChannelsVideoAndInfoDescription">
                                     <div className="liveHomeChannelsVideoAndInfoDescriptionLeft">
-                                    <Link to = {`/${channel.name}`}><img className="liveHomeChannelsVideoAndInfoDescriptionLeftImage" src={channel.image}></img></Link>
+                                    <Link to = {`/${channel.user_name}`}><img className="liveHomeChannelsVideoAndInfoDescriptionLeftImage" src={channel.image}></img></Link>
                                     </div>
                                     <div className="liveHomeChannelsVideoAndInfoDescriptionRight">
-                                            <Link to = {`/${channel.name}`}>
+                                            <Link to = {`/${channel.user_name}`}>
                                             <div className="liveHomeChannelsVideoAndInfoDescriptionRightTitle">
                                                 {channel.title}
                                             </div>
                                             </Link>
-                                            <Link to = {`/${channel.name}`}><div className="liveHomeChannelsVideoAndInfoDescriptionRightName">
+                                            <Link to = {`/${channel.user_name}`}><div className="liveHomeChannelsVideoAndInfoDescriptionRightName">
                                                 {channel.name}
                                             </div>
                                             </Link>
