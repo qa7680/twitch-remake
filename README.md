@@ -1,5 +1,9 @@
-<<<<<<< HEAD
-# twitch-remake
+## Lighter and faster twitch client built using React.js and the Twitch API.
+
+
+
+
+
 =======
 # Getting Started with Create React App
 
