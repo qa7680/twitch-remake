@@ -193,6 +193,7 @@ const Nav = () => {
                         </div>
                         }
                     </div>
+                    <p className="lightTwitch">Light Twitch</p>
                 </div>
                 
                 <div className="dropdownSearch">

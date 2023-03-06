@@ -2,6 +2,10 @@
     font-family: Inter;
     src: url("../../fonts/Inter.ttf");
 }
+@font-face {
+    font-family: Tiltwrap;
+    src: url('../../fonts/TiltWarp-Regular.ttf');
+}
 
 .navigation{
     display: flex;
@@ -207,4 +211,12 @@
 a{
     display: flex;
 }
-
+.lightTwitch{
+    margin: 0;
+    padding: 0;
+    margin-left: 10rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Tiltwrap;
+    font-size: large;
+}
